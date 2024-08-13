@@ -1338,6 +1338,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 519420032}
+  - {fileID: 1763036103}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &978817065
@@ -2234,6 +2235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1763036103}
   - component: {fileID: 1763036102}
+  - component: {fileID: 1763036104}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -2301,13 +2303,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1763036101}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 978817064}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1763036104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763036101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0468e40430ac64d5b88e415cc9c3fb71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: {fileID: 1712738857}
 --- !u!4 &1885566885 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2010023016241940434, guid: adabc8ee8e7be46b8af4bd83720876eb, type: 3}
@@ -2582,7 +2597,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 978817064}
-  - {fileID: 1763036103}
   - {fileID: 1358855908}
   - {fileID: 621050394}
   - {fileID: 32064852}
