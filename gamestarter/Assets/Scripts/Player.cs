@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private bool ramp;
     public ParticleSystem particles;
     public GameObject starterBox;
+    public ParticleSystem smoke;
     // Start is called before the first frame update
     void Awake()
     {
@@ -49,6 +50,10 @@ public class Player : MonoBehaviour
         else if (horizontalInput == 0){
             speed = 10;
         }
+
+        if(grounded && body.velocity.x != 0){
+                Instantiate(smoke, new Vector2(transform.position.x,transform.position.y-1), transform.rotation);
+            }
 
         //anim.SetBool("Walking", horizontalInput != 0);
         //anim.SetBool("Grounded", grounded);
