@@ -25,7 +25,6 @@ public class Player : MonoBehaviour
     void Update()
     {
         horizontalInput = Input.GetAxis("Horizontal");
-        //body.velocity = new Vector2(horizontalInput * speed,body.velocity.y);
         if(!ramp){body.velocity = new Vector2(horizontalInput * speed,body.velocity.y);}
         
         if (Input.GetKeyDown(KeyCode.Space) && grounded) {
@@ -52,14 +51,15 @@ public class Player : MonoBehaviour
         //anim.SetBool("Walking", horizontalInput != 0);
         //anim.SetBool("Grounded", grounded);
 
-        //if (transform.position.y < -10) {
-            //Manager.instance.Restart();
-        //}
+        if (transform.position.y < -10) {
+            Manager.instance.Restart();
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.tag == "Ground") {
             grounded = true;
+            ramp = false;
         }
     }
 
@@ -69,20 +69,13 @@ public class Player : MonoBehaviour
           //  Manager.instance.Win();
        // }
         if(collision.gameObject.tag == "Ramp"){
-            //print("Ramp Touched");
-            //body.velocity = new Vector2(25, 25);
-            //body.AddForce(new Vector2(Mathf.Cos(collision.gameObject.transform.rotation.z) * rampPower, Mathf.Sin(collision.gameObject.transform.rotation.z) * rampPower), ForceMode2D.Impulse);
             ramp=true;
-            body.AddForce(new Vector2(20,20), ForceMode2D.Impulse);
-            
+            Ramp rampObj = collision.gameObject.GetComponent<Ramp>();
+            //body.AddForce(new Vector2(rampObj.rampPower * transform.localScale.x,rampObj.rampPower), ForceMode2D.Impulse);
+            //print(Mathf.Sin((collision.gameObject.transform.rotation.z + 90f) * Mathf.PI / 180f) * rampObj.rampPower);
+            //print((collision.gameObject.transform.eulerAngles.z) - 90f);
+            body.AddForce(new Vector2(rampObj.rampPower * Mathf.Cos((collision.gameObject.transform.eulerAngles.z) - 90f), rampObj.rampPower * Mathf.Sin((collision.gameObject.transform.eulerAngles.z) - 90f)), ForceMode2D.Impulse);
+            //body.AddForce(new Vector2(20,20), ForceMode2D.Impulse);
         }
-    }
-    private void OnTriggerExit2D(Collider2D collision){
-         if(collision.gameObject.tag == "Ramp"){
-            ramp=false;
-            
-        }
-            
-
     }
 }
