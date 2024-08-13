@@ -65,9 +65,9 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if (collision.gameObject.tag == "Flag") {
-          //  Manager.instance.Win();
-       // }
+        if (collision.gameObject.tag == "Flag") {
+            Manager.instance.Win();
+        }
         if(collision.gameObject.tag == "Ramp"){
             ramp=true;
             Ramp rampObj = collision.gameObject.GetComponent<Ramp>();
