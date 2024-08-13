@@ -36,12 +36,12 @@ public class Player : MonoBehaviour
         }
         if (horizontalInput > 0)
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(2, 2, 1);
             speed += 0.2f;
         }
         else if (horizontalInput < 0)
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(-2, 2, 1);
             speed += 0.2f;
         }
         else if (horizontalInput == 0){
