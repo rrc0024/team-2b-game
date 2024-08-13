@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     private float horizontalInput;
     public float rampPower = 25f;
     private bool ramp;
+    public ParticleSystem particles;
+    public GameObject starterBox;
     // Start is called before the first frame update
     void Awake()
     {
@@ -76,6 +78,11 @@ public class Player : MonoBehaviour
             //print((collision.gameObject.transform.eulerAngles.z) - 90f);
             body.AddForce(new Vector2(rampObj.rampPower * Mathf.Cos((collision.gameObject.transform.eulerAngles.z) - 90f), rampObj.rampPower * Mathf.Sin((collision.gameObject.transform.eulerAngles.z) - 90f)), ForceMode2D.Impulse);
             //body.AddForce(new Vector2(20,20), ForceMode2D.Impulse);
+        }
+        if(collision.gameObject.tag == "Passenger"){
+            Destroy(collision.gameObject);
+            Instantiate(particles, transform.position, particles.transform.rotation);
+            starterBox.SetActive(false);
         }
     }
 }
