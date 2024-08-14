@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
         }
 
         if(grounded && body.velocity.x != 0){
-                Instantiate(smoke, new Vector2(transform.position.x,transform.position.y-1), transform.rotation);
+                //Instantiate(smoke, new Vector2(transform.position.x,transform.position.y-1), transform.rotation);
             }
 
         //anim.SetBool("Walking", horizontalInput != 0);
