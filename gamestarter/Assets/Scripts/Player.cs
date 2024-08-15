@@ -8,20 +8,23 @@ public class Player : MonoBehaviour
     //private Animator anim;
     [SerializeField] private float speed;
     private bool grounded;
+    private bool hasPassenger;
     private float horizontalInput;
     public float rampPower = 25f;
     private bool ramp;
     public ParticleSystem particles;
     public GameObject starterBox;
     public ParticleSystem smoke;
+    public Animator anim;
     // Start is called before the first frame update
     void Awake()
     {
         body = GetComponent<Rigidbody2D>();
-        //anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         speed = 10;
         grounded = false;
         ramp=false;
+        hasPassenger = false;
     }
 
     // Update is called once per frame
@@ -55,8 +58,9 @@ public class Player : MonoBehaviour
                 //Instantiate(smoke, new Vector2(transform.position.x,transform.position.y-1), transform.rotation);
             }
 
-        //anim.SetBool("Walking", horizontalInput != 0);
-        //anim.SetBool("Grounded", grounded);
+        anim.SetBool("Walking", horizontalInput != 0);
+        anim.SetBool("Grounded", grounded);
+        anim.SetBool("hasPassenger", hasPassenger);
 
         if (transform.position.y < -10) {
             Manager.instance.Restart();
@@ -85,6 +89,7 @@ public class Player : MonoBehaviour
             //body.AddForce(new Vector2(20,20), ForceMode2D.Impulse);
         }
         if(collision.gameObject.tag == "Passenger"){
+            hasPassenger = true;
             Destroy(collision.gameObject);
             Instantiate(particles, transform.position, particles.transform.rotation);
             starterBox.SetActive(false);

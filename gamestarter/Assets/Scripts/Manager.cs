@@ -7,6 +7,7 @@ public class Manager : MonoBehaviour
 {
     public static Manager instance { get; private set; }
     public GameObject winScreen;
+    public GameObject text;
     // Start is called before the first frame update
     void Awake()
     {
@@ -28,6 +29,7 @@ public class Manager : MonoBehaviour
     }
 
     public void Win() {
+        text.SetActive(false);
         winScreen.SetActive(true);
         Time.timeScale = 0;
     }
